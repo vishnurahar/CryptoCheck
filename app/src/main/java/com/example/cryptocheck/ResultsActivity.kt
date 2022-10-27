@@ -15,8 +15,8 @@ class ResultsActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_results)
 
         val bundle: Bundle? = intent.extras
-        var result: String = ""
-        var type: String = ""
+        var result = ""
+        var type = ""
         if (bundle != null) {
             result = bundle["RESULT"].toString()
             type = bundle["TYPE"].toString()
@@ -44,11 +44,15 @@ class ResultsActivity : AppCompatActivity() {
         val intent = Intent(Intent.ACTION_SEND)
         intent.type = "text/plain"
         intent.putExtra(Intent.EXTRA_SUBJECT, "$type Address")
-        intent.putExtra(Intent.EXTRA_TEXT, address)
+        intent.putExtra(Intent.EXTRA_TEXT, "$type : $address")
         startActivity(Intent.createChooser(intent, "Share Via"))
     }
 
     private fun checkAddress(address: String, type: String) : Boolean{
-        return true
+         return if (type == "BTC"){
+             address.matches(Regex("^(bc1|1)[a-zA-HJ-NP-Z0-9]{25,39}"))
+        }else{
+             address.matches(Regex("/^(0x){1}[0-9a-fA-F]{40}\$/i"))
+        }
     }
 }

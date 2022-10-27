@@ -13,7 +13,7 @@ import com.example.cryptocheck.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var binding : ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
@@ -28,19 +28,24 @@ class MainActivity : AppCompatActivity() {
     }
 
     // RunTime Permission reference - https://www.geeksforgeeks.org/android-how-to-request-permissions-in-android-application/
-    private fun openScanner(coinType : String) {
-        if(ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
-            == PackageManager.PERMISSION_GRANTED) {
+    private fun openScanner(coinType: String) {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
+            == PackageManager.PERMISSION_GRANTED
+        ) {
             val intent = Intent(this, ScannerActivity::class.java)
             intent.putExtra("TYPE", coinType)
             startActivity(intent)
-        }else {
+        } else {
             askForPermission(Manifest.permission.CAMERA, CAMERA_PERMISSION_CODE)
         }
     }
 
     private fun askForPermission(permission: String, requestCode: Int) {
-        if (ContextCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_DENIED) {
+        if (ContextCompat.checkSelfPermission(
+                this,
+                permission
+            ) == PackageManager.PERMISSION_DENIED
+        ) {
             // Requesting the permission
             ActivityCompat.requestPermissions(this, arrayOf(permission), requestCode)
         } else {

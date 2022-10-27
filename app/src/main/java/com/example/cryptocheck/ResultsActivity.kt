@@ -25,7 +25,7 @@ class ResultsActivity : AppCompatActivity() {
         }
 
         binding.validateButton.setOnClickListener {
-            if (checkAddress(result, type)){
+            if (checkAddress(result, type)) {
                 binding.validatedResult.text = getString(R.string.valid_address, type)
             } else {
                 binding.validatedResult.text = getString(R.string.invalid_address, type)
@@ -40,7 +40,7 @@ class ResultsActivity : AppCompatActivity() {
         }
     }
 
-    private fun shareResult(address : String, type: String){
+    private fun shareResult(address: String, type: String) {
         val intent = Intent(Intent.ACTION_SEND)
         intent.type = "text/plain"
         intent.putExtra(Intent.EXTRA_SUBJECT, "$type Address")
@@ -48,12 +48,12 @@ class ResultsActivity : AppCompatActivity() {
         startActivity(Intent.createChooser(intent, "Share Via"))
     }
 
-    private fun checkAddress(address: String, type: String) : Boolean{
-         return if (type == "BTC"){
-             // Source : BTC & ETH Regex - https://gist.github.com/MBrassey/623f7b8d02766fa2d826bf9eca3fe005
-             address.matches(Regex("^(bc1|[13])[a-zA-HJ-NP-Z0-9]{25,39}\$"))
-        }else{
-             address.matches(Regex("^0x[a-fA-F0-9]{40}\$"))
+    private fun checkAddress(address: String, type: String): Boolean {
+        return if (type == "BTC") {
+            // Source : BTC & ETH Regex - https://gist.github.com/MBrassey/623f7b8d02766fa2d826bf9eca3fe005
+            address.matches(Regex("^(bc1|[13])[a-zA-HJ-NP-Z0-9]{25,39}\$"))
+        } else {
+            address.matches(Regex("^0x[a-fA-F0-9]{40}\$"))
         }
     }
 }

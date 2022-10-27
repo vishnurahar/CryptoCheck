@@ -6,45 +6,53 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#101D25"
         tools:context=".MainActivity">
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/container"
-            />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ethbtc_image_view"
+            android:layout_width="250dp"
+            android:layout_height="150dp"
+            android:src="@drawable/ethbtc"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.251" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/btcTv"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#555"
-            android:padding="10dp"
+            android:background="@drawable/text_bg"
+            android:padding="14dp"
+            android:textSize="16sp"
             android:text="@string/btc"
-            android:textColor="@color/white"
+            android:textColor="@color/TextColor"
+            android:textAlignment="center"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="100dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/ethTv"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_optimizationLevel="chains" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ethbtc_image_view" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/ethTv"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#555"
-            android:padding="10dp"
+            android:background="@drawable/text_bg"
+            android:padding="14dp"
+            android:textSize="16sp"
             android:text="@string/eth"
-            android:textColor="@color/white"
+            android:textAlignment="center"
+            android:textColor="@color/TextColor"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btcTv"
-            app:layout_constraintHorizontal_bias="0.5"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="40dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_optimizationLevel="chains" />
+            app:layout_constraintTop_toBottomOf="@+id/btcTv" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

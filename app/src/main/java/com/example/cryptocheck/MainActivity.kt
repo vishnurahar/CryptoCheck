@@ -18,7 +18,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-
         binding.btcTv.setOnClickListener {
             openScanner("BTC")
         }
@@ -28,10 +27,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // RunTime Permission reference - https://www.geeksforgeeks.org/android-how-to-request-permissions-in-android-application/
     private fun openScanner(coinType : String) {
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
             == PackageManager.PERMISSION_GRANTED) {
-            /* open QR code scanner */
             val intent = Intent(this, ScannerActivity::class.java)
             intent.putExtra("TYPE", coinType)
             startActivity(intent)

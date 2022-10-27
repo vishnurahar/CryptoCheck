@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Crypto Check</string>
-    <string name="btc">BTC</string>
-    <string name="eth">ETH</string>
+    <string name="btc">BITCOIN</string>
+    <string name="eth">ETHEREUM</string>
     <string name="result">Result</string>
     <string name="validate">Validate</string>
     <string name="share">Share</string>

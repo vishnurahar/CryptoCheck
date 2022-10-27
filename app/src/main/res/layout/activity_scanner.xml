@@ -9,11 +9,20 @@
         android:layout_height="match_parent"
         tools:context=".ScannerActivity">
 
-
         <com.budiyev.android.codescanner.CodeScannerView
             android:id="@+id/scanner_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            app:frameCornersRadius="26dp"
+            app:frameCornersSize="60dp"
+            app:frameCornersCapRounded="true"
+            app:frameThickness="4dp"
+            app:frameColor="#00B09C"
+            app:autoFocusButtonColor="#00B09C"
+            app:flashButtonColor="#00B09C"
+            app:maskVisible="true"
+            app:maskColor="#4D0F1E25"
+            />
 
     </FrameLayout>
 </layout>

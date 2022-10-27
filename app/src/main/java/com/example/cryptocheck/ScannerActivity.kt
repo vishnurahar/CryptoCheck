@@ -21,12 +21,14 @@ class ScannerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_scanner)
 
+        // Getting intent extras
         val b: Bundle? = intent.extras
         if (b != null) {
             val result = b["TYPE"].toString()
             coinType = result
         }
 
+        // Initialization of code scanner
         codeScanner = CodeScanner(this, binding.scannerView)
 
         codeScanner.camera = CodeScanner.CAMERA_BACK
@@ -36,7 +38,7 @@ class ScannerActivity : AppCompatActivity() {
         codeScanner.isAutoFocusEnabled = true
         codeScanner.isFlashEnabled = false
 
-        // Callbacks
+
         codeScanner.decodeCallback = DecodeCallback {
             runOnUiThread {
                 val intent = Intent(this, ResultsActivity::class.java)
@@ -45,7 +47,7 @@ class ScannerActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         }
-        codeScanner.errorCallback = ErrorCallback { // or ErrorCallback.SUPPRESS
+        codeScanner.errorCallback = ErrorCallback {
             runOnUiThread {
                 Toast.makeText(this, "Camera initialization error: ${it.message}",
                     Toast.LENGTH_LONG).show()

@@ -50,9 +50,10 @@ class ResultsActivity : AppCompatActivity() {
 
     private fun checkAddress(address: String, type: String) : Boolean{
          return if (type == "BTC"){
-             address.matches(Regex("^(bc1|1)[a-zA-HJ-NP-Z0-9]{25,39}"))
+             // Source : BTC & ETH Regex - https://gist.github.com/MBrassey/623f7b8d02766fa2d826bf9eca3fe005
+             address.matches(Regex("^(bc1|[13])[a-zA-HJ-NP-Z0-9]{25,39}\$"))
         }else{
-             address.matches(Regex("/^(0x){1}[0-9a-fA-F]{40}\$/i"))
+             address.matches(Regex("^0x[a-fA-F0-9]{40}\$"))
         }
     }
 }

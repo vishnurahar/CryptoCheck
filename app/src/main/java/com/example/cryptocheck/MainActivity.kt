@@ -32,10 +32,12 @@ class MainActivity : AppCompatActivity() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
             == PackageManager.PERMISSION_GRANTED
         ) {
+            // opening scanner activity
             val intent = Intent(this, ScannerActivity::class.java)
             intent.putExtra("TYPE", coinType)
             startActivity(intent)
         } else {
+            // ask for permission if not given already
             askForPermission(Manifest.permission.CAMERA, CAMERA_PERMISSION_CODE)
         }
     }

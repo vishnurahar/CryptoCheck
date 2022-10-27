@@ -24,8 +24,7 @@ class ScannerActivity : AppCompatActivity() {
         // Getting intent extras
         val b: Bundle? = intent.extras
         if (b != null) {
-            val result = b["TYPE"].toString()
-            coinType = result
+            coinType = b["TYPE"].toString()
         }
 
         // Initialization of code scanner
@@ -39,7 +38,7 @@ class ScannerActivity : AppCompatActivity() {
         codeScanner.isFlashEnabled = false
 
 
-        codeScanner.decodeCallback = DecodeCallback {
+        codeScanner.decodeCallback = DecodeCallback { // Success call back from scanner
             runOnUiThread {
                 val intent = Intent(this, ResultsActivity::class.java)
                 intent.putExtra("RESULT", it.text)
@@ -47,7 +46,7 @@ class ScannerActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         }
-        codeScanner.errorCallback = ErrorCallback {
+        codeScanner.errorCallback = ErrorCallback { // Error handling from scanner
             runOnUiThread {
                 Toast.makeText(
                     this, "Camera initialization error: ${it.message}",

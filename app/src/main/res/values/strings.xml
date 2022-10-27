@@ -8,4 +8,5 @@
     <string name="coin_type">Coin Type : %1$s</string>
     <string name="valid_address">Valid %1$s Address</string>
     <string name="invalid_address">Invalid %1$s Address</string>
+    <string name="rescan">Rescan</string>
 </resources>
